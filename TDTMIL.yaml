@@ -1,0 +1,56 @@
+General:
+    comment:
+    seed: 2024
+    fp16: True
+    amp_level: O2
+    precision: 16
+    multi_gpu_mode: dp
+    gpus: [1]
+    epochs: 100
+    grad_acc: 2
+    frozen_bn: False
+    patience: 20
+    server: train #train #test
+    log_path: logs/
+
+Data:
+    dataset_name: camel_data
+    data_shuffle: False
+
+    data_dir: /media/cvnlp/FY/TDTMIL/Camelyon/Feature20/
+    label_dir: dataset_csv/camelyon16/
+
+#    data_dir: /home/cvnlp/TCGA3Fn/pt_files/
+#    label_dir: dataset_csv/TCGA/
+    fold: 0
+    nfold: 4
+
+    train_dataloader:
+        batch_size: 1
+        num_workers: 8
+
+    test_dataloader:
+        batch_size: 1
+        num_workers: 8
+
+Model:
+    name: TransMIL
+    n_classes: 2
+
+#C16:0.0001,0.0001,TCGA:0.0002,0.0001/
+Optimizer:
+    opt: lookahead_radam
+    lr: 0.0001
+    opt_eps: null
+    opt_betas: null
+    momentum: null
+    weight_decay: 0.0001
+
+Loss:
+#     base_loss: CrossEntropyLoss
+     base_loss: focal
+#    base_loss: dice
+#    base_loss: jaccard
+#    base_loss: lovasz
+#    base_loss: tversky
+
