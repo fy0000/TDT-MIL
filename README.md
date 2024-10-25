@@ -1,2 +1,2 @@
-# TDT-MIL
-We will disclose the code after the article is accepted!
+# TDT-MIL: a framework with dual-channel spatial positional encoder for Weakly-Supervised whole slide image classification
+
